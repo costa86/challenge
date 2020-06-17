@@ -8,7 +8,11 @@ function Currency(props) {
 
 
 export function Currencies() {
-    const choices = ["USD", "BRL", "EUR"];
+    const choices = [
+        "USD", "AED", "ARS", "AUD", "BAT",
+        "BHC", "BRL", "BTG", "CAD", "CHF",
+        "CNY", "DKK", "EUR", "GBP", "INR", "JPY"
+    ];
     const allCurrencies = choices.map((e) => (
         <Currency item={e} />
     ));

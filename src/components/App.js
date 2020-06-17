@@ -4,6 +4,8 @@ import { Each } from "./Each";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Currencies } from './Currencies';
+import {TopBtn} from "./TopBtn";
+
 
 export function App() {
 
@@ -51,17 +53,15 @@ export function App() {
             <Header />
             <div className="intro">
                 <h1>Currency Converter</h1>
-                <h2>Receive competivite and transparent pricing with no hidden sprads. See how we compare</h2>
+                <h2>Receive competivite and transparent pricing with no hidden spreads. See how we compare</h2>
 
                 <input id="from" onChange={changeBtnSearch} type="number" min="1" defaultValue="1"></input>
+                <small>Enter an amount to check the rates</small>
                 <select name="" onChange={x => setCurrency(x.target.value)} id="currency">
                     <Currencies />
-                    {/*       <option>EUR</option>
-                    <option>BRL</option>
-                    <option>CAD</option> */}
 
                 </select>
-                <button disabled={btnSearchDisabled} onClick={runGetRates}>CONVERT</button>
+                <button disabled={btnSearchDisabled} onClick={runGetRates}>Convert</button>
                 <p>{currency}</p>
                 <p>{amount}</p>
                 <p>Results: {items.length}</p>
@@ -72,6 +72,7 @@ export function App() {
                 {results}
 
             </div>
+            <TopBtn/>
             <Footer />
         </>
     );
