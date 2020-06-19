@@ -8,18 +8,13 @@ input {
   transition: $main-transition;
   border-radius: 5px;
   width: 130px;
-  &:hover {
+  &:hover, &:focus {
     border: 3px solid $uphold-green;
   }
 }
 
 small {
   display: block;
-}
-
-h1,
-p {
-  color: blue;
 }
 
 .card {
@@ -93,6 +88,7 @@ select {
   margin: 5px;
   padding: 15px 32px;
   font-size: 16px;
+  border: 2px solid $uphold-green;
 }
 
 .results {

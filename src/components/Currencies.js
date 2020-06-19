@@ -14,7 +14,7 @@ export function Currencies() {
         "CNY", "DKK", "EUR", "GBP", "INR", "JPY"
     ];
     const allCurrencies = choices.map((e) => (
-        <Currency item={e} />
+        <Currency key={e} item={e} />
     ));
 
     return (
