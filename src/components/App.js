@@ -27,10 +27,10 @@ export function App() {
     const [btnSearchDisabled, setBtnSearchDisabled] = useState(false);
 
     /**
- * Returns cacheTimer for a request (milliseconds). Possible outputs:
- * 1. Current cacheTimer value (no changes)
- * 2. Current time + cacheLifeSpan
- */
+     * Returns cacheTimer for a request (milliseconds). Possible outputs:
+     * 1. Current cacheTimer value (no changes)
+     * 2. Current time + cacheLifeSpan
+     */
     function getCacheTimer() {
         const now = new Date().getTime();
         if (cacheTimer < (now + cacheLifeSpan)) {
@@ -38,7 +38,6 @@ export function App() {
         }
         return cacheTimer;
     }
-
 
     let sample = [
         {
@@ -826,9 +825,13 @@ export function App() {
 
     window.onload = () => document.getElementById("from").focus();
 
-    async function getRates(currency) {
-        let res = await sdk.getTicker(currency);
-        let data = res.filter(n => n.currency === currency);
+    /**
+     * Returns fetched data for a currency. Format: Array
+     * @param {*} currencyPar 
+     */
+    async function getRates(currencyPar) {
+        let res = await sdk.getTicker(currencyPar);
+        let data = res.filter(n => n.currency === currencyPar);
         return data;
 
     };
@@ -842,7 +845,10 @@ export function App() {
         />
     ));
 
-
+    /**
+     * Sets items to be rendered, based on values stored on cache.
+     * If the requested currency is not on the cache yet, it will be fetched beforehand.
+     */
     async function setCachedResult() {
 
         const now = new Date().getTime();
@@ -850,19 +856,23 @@ export function App() {
         if (!cache[currency] || cache[currency].time < now) {
             cache[currency] = await getRates(currency);
             cache[currency].time = getCacheTimer();
-
             setCache({ ...cache, [currency]: cache[currency] });
         }
         setItems(cache[currency]);
         console.log(cache[currency]);
     }
 
-
-    function runGetRates() {
+    /**
+     * Starts all
+     */
+    function init() {
         setCachedResult();
-
     }
 
+    /**
+     * Toggles enabled/disabled on "convert" button
+     * @param {*} e  
+     */
     function changeBtnSearch(e) {
         let res = e.target.value;
         setAmount(res);
@@ -883,7 +893,7 @@ export function App() {
                     <Currencies />
 
                 </select>
-                <button disabled={btnSearchDisabled} onClick={runGetRates}>Convert</button>
+                <button disabled={btnSearchDisabled} onClick={init}>Convert</button>
                 <p>{currency}</p>
                 <p>{amount}</p>
                 <p>Results: {items.length}</p>

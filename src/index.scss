@@ -1,5 +1,10 @@
 $uphold-green: rgb(73, 204, 104);
 $main-transition: 0.5s;
+$main-padding: 5px;
+
+* {
+  font-family: "Muli", sans-serif;
+}
 
 input {
   padding: 5px;
@@ -8,7 +13,8 @@ input {
   transition: $main-transition;
   border-radius: 5px;
   width: 130px;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border: 3px solid $uphold-green;
   }
 }
@@ -45,8 +51,49 @@ small {
 }
 
 .header {
+  display: grid;
+  grid-template-areas: "nav-links logo login";
+  grid-template-columns: 10% 150px 150px;
+  justify-content: space-between;
+  gap: $main-padding;
+
   grid-area: header;
 }
+
+@media screen and (max-width: 600px) {
+  .header {
+    grid-template-areas:
+      "logo"
+      "nav-links"
+      "login";
+    grid-template-columns: 1fr;
+    .nav-links {
+      a {
+        display: block;
+      }
+    }
+    .logo {
+      width: 40%;
+    }
+  }
+}
+.logo {
+  grid-area: logo;
+  width: 100%;
+  height: auto;
+}
+.login {
+  grid-area: login;
+}
+.nav-links {
+  grid-area: nav-links;
+
+  a {
+    text-decoration: none;
+    padding: $main-padding;
+  }
+}
+
 .footer {
   grid-area: footer;
 }
