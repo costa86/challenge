@@ -894,9 +894,9 @@ export function App() {
 
                 </select>
                 <button disabled={btnSearchDisabled} onClick={init}>Convert</button>
-                <p>{currency}</p>
+          {/*       <p>{currency}</p>
                 <p>{amount}</p>
-                <p>Results: {items.length}</p>
+                <p>Results: {items.length}</p> */}
             </div>
 
 

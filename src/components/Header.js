@@ -7,16 +7,17 @@ export function Header() {
     return (
         <>
             <div className="header">
-                <h3>HEADER</h3>
                 <div className="nav-links">
-                    <a href="/#">Personal</a>
-                    <a href="/#">Business</a>
-                    <a href="/#">Partners</a>
+                    <a href="/personal">Personal</a>
+                    <a href="/business">Business</a>
+                    <a href="/partners">Partners</a>
                 </div>
 
-                <button className="login">Log In</button>
-                <img className="logo" alt="Upold logo" src={logo}></img>
+                <a href="/login" className="login" >
+                    <button>Log In</button>
+                </a>
 
+                <img className="logo" alt="Upold logo" src={logo}></img>
             </div>
 
         </>

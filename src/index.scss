@@ -1,9 +1,11 @@
 $uphold-green: rgb(73, 204, 104);
 $main-transition: 0.5s;
 $main-padding: 5px;
+$dark-gray: rgb(70, 69, 69);
 
 * {
   font-family: "Muli", sans-serif;
+  color: grey;
 }
 
 input {
@@ -60,7 +62,7 @@ small {
   grid-area: header;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .header {
     grid-template-areas:
       "logo"
@@ -70,10 +72,19 @@ small {
     .nav-links {
       a {
         display: block;
+        text-decoration: none;
       }
     }
     .logo {
       width: 40%;
+      margin: auto;
+    }
+
+    .login {
+      button {
+        width: 40%;
+        margin: auto;
+      }
     }
   }
 }
@@ -96,8 +107,49 @@ small {
 
 .footer {
   grid-area: footer;
+  display: grid;
+  gap: $main-padding;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: left;
+
+  p {
+    color: $dark-gray;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+    padding: $main-padding;
+    &:hover {
+      color: $dark-gray;
+      text-decoration: underline;
+    }
+  }
+
+  .footer-logo{
+    text-align: center;
+    img{
+      width: 40%;
+    }
+  }
+
+  .apps {
+    img {
+      filter: grayscale(100%);
+      width: 15%;
+      margin: $main-padding;
+      transition: $main-transition;
+      cursor: pointer;
+      &:hover{
+        transform: scale(1.3);
+      }
+    }
+  }
 }
+
 .intro {
+  h1 {
+    color: black;
+  }
   grid-area: intro;
 }
 button:disabled {
