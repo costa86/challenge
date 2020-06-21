@@ -1,18 +1,20 @@
 import React from 'react'
 
-
 export function Each(props) {
 
     const myRound = num => (+num).toFixed(2).toString();
+
+    let image = `./../assets/${props.item.pair.slice(0,3)}.png`;
 
     return (
         <>
             <div className="card">
                 <h3>{myRound(props.amount / props.item.bid)}</h3>
                 <h3>{props.item.pair.slice(0, 3)}</h3>
+                <img alt="dad" src={image}></img>
             </div>
 
         </>
-    )
+    );
 
 }

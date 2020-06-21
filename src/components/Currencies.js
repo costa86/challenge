@@ -3,7 +3,7 @@ import React from 'react'
 function Currency(props) {
     return (
         <option>{props.item}</option>
-    )
+    );
 }
 
 
@@ -21,6 +21,6 @@ export function Currencies() {
         <>
             {allCurrencies}
         </>
-    )
+    );
 
 }

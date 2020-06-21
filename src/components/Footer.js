@@ -4,7 +4,6 @@ import logo from "./../assets/logo.svg";
 
 export function Footer() {
 
-
     return (
         <>
             <div className="footer">
@@ -16,7 +15,7 @@ export function Footer() {
                     <p>Products</p>
                     <a href="/consumers">Consumers</a>
                     <a href="/business">Business</a>
-                    <a href="/partners">Partnes</a>
+                    <a href="/partners">Partners</a>
                 </div>
 
                 <div className="company">
@@ -51,6 +50,5 @@ export function Footer() {
             </div>
 
         </>
-    )
-
+    );
 }
