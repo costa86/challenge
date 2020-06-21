@@ -27,18 +27,26 @@ small {
 
 .card {
   padding: $main-padding;
-  
-  border: 3px solid;
-  //background-color: $uphold-green;
-  img{
-    width: 23%;
-    float: right;
+  img {
+    width: 40px;
+    display: block;
+    margin: auto;
+    border: 2px solid white;
+    border-radius: 50%;
   }
   text-align: center;
   width: fit-content;
   h3 {
     margin: $main-padding;
     display: inline-block;
+  }
+  &:hover {
+    border-radius: $main-padding;
+
+    h3 {
+      color: white;
+    }
+    background-color: $uphold-green;
   }
 }
 
@@ -61,7 +69,7 @@ small {
   //box-shadow: 0px 26px 20px -11px rgba(71, 62, 71, 1);
   padding: $main-padding;
   align-items: center;
-  margin-bottom: 10%;
+  margin-bottom: 20px;
   display: grid;
   grid-template-columns: 20% auto 20%;
   justify-content: space-between;
@@ -122,7 +130,7 @@ a {
 }
 
 .footer {
-  margin-top: 10%;
+  margin-top: 20px;
   grid-area: footer;
   display: grid;
   gap: $main-padding;
@@ -205,9 +213,9 @@ select {
   grid-area: results;
   justify-items: left;
   display: grid;
-  gap: 5px;
+  gap: $main-padding;
   margin: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .top {

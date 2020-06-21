@@ -12,12 +12,12 @@ export function Each(props) {
 
     let noCurrencyImage = `./../assets/XPT.png`;
 
-    function setImg(source, defaultImg){
+    function setImg(source, defaultImg) {
         let url = source;
         let img = new Image();
         img.src = url;
-        if (img.width === 0){
-            url = defaultImg; 
+        if (img.width === 0) {
+            url = defaultImg;
         }
         return url;
     }
@@ -25,9 +25,9 @@ export function Each(props) {
     return (
         <>
             <div className="card">
+                <img alt={currencyName} src={setImg(currencyImage, noCurrencyImage)}></img>
                 <h3>{currencyConverted}</h3>
                 <h3>{currencyName}</h3>
-                <img alt={currencyName} src={setImg(currencyImage,noCurrencyImage)}></img>
             </div>
 
         </>
