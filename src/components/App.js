@@ -18,14 +18,10 @@ export function App() {
 
     const [amount, setAmount] = useState("1");
     const [cacheTimer, setCacheTimer] = useState(0);
-    //const [enableSearch, setEnableSearch] = useState(false);
-
-
     const [items, setItems] = useState([]);
     const [cache, setCache] = useState({});
-
     const [currency, setCurrency] = useState("USD");
-    const [btnSearchDisabled, setBtnSearchDisabled] = useState(false);
+    const [SearchDisabled, setSearchDisabled] = useState(false);
 
     /**
      * Returns cacheTimer for a request (milliseconds). Possible outputs:
@@ -39,9 +35,6 @@ export function App() {
         }
         return cacheTimer;
     }
-
-    // Sets focus on currency input field when page loads
-    //window.onload = () => document.getElementById("from").focus();
 
     /**
      * Returns fetched data for a currency. Format: Array
@@ -123,47 +116,24 @@ export function App() {
             setCache({ ...cache, [currency]: cache[currency] });
         }
         setItems(cache[currency]);
-        console.log(cache[currency]);
-    }
-
-    /**
-     * Starts all
-     */
-    /*    function init() {
-           setCachedResult();
-       } */
-
-    function init() {
-
-        let input = document.getElementById("input");
-
-        setBtnSearchDisabled((input && +input.value > 0) ? true : false);
-
-        setCurrency(document.getElementById("currency").value);
-
-        setCachedResult();
+        //console.log(cache[currency]);
     }
 
     useEffect(() => {
         document.getElementById("from").focus();
-
-        //setCurrency(document.getElementById("currency").value);
-
-        //console.log(currency);
         setCachedResult();
-
+        //console.log(currency);
     }, [currency]);
 
 
-
     /**
-     * Toggles enabled/disabled on "convert" button
+     * Toggles enabled/disabled on currency selector
      * @param {*} e  
      */
-    function changeBtnSearch(e) {
+    function changeSearch(e) {
         let res = e.target.value;
         setAmount(res);
-        setBtnSearchDisabled((res && +res > 0) ? false : true);
+        setSearchDisabled((res && +res > 0) ? false : true);
     }
 
     return (
@@ -174,18 +144,12 @@ export function App() {
 
                 <h2>Receive competivite and transparent pricing with no hidden spreads. See how we compare</h2>
 
-                <input id="from" onChange={changeBtnSearch} type="number" min="1" defaultValue="1"></input>
+                <input id="from" onChange={changeSearch} type="number" min="1" defaultValue="1"></input>
                 <small>Enter an amount to check the rates</small>
 
-                {<select name="" disabled={btnSearchDisabled} onChange={init} id="currency">
+                {<select name="" disabled={SearchDisabled} onChange={(x) => setCurrency(x.target.value)} id="currency">
                     <Currencies />
                 </select>}
-
-                {/*               {<select name="" onChange={x => setCurrency(x.target.value)} id="currency">
-                    <Currencies />
-                </select>} */}
-
-                {/* <button disabled={btnSearchDisabled} onClick={init}>Convert</button> */}
 
             </div>
 

@@ -32,10 +32,10 @@ select {
   background-color: white;
   margin: $main-padding;
   cursor: pointer;
-  &:disabled{
+  &:disabled {
     background-color: gainsboro;
     color: black;
-    opacity: .5;
+    opacity: 0.5;
     border: 3px solid gray;
     cursor: not-allowed;
   }
@@ -51,7 +51,8 @@ small {
     width: 40px;
     display: block;
     margin: auto;
-    border: 2px solid white;
+    border-radius: $main-padding;
+    border: 2px solid ;
     border-radius: 50%;
   }
   text-align: center;
@@ -62,6 +63,9 @@ small {
   }
   &:hover {
     border-radius: $main-padding;
+    img{
+      border: 2px solid white;
+    }
 
     h3 {
       color: white;
