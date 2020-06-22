@@ -7,9 +7,14 @@ export function Each(props) {
 
     const roundedResult = num => (+num).toFixed(2).toString();
 
+    let bid = roundedResult(props.item.bid);
+    let ask = roundedResult(props.item.ask);
+
     let currencyConverted = roundedResult(props.amount / props.item.bid);
 
     let currencyName = props.item.pair.slice(0, 3);
+
+    let titleHover = `${currencyName} - ${props.item.currency}\nBid: ${bid}\nAsk: ${ask}`;
 
     /**
      * Returns image for currency. Possible outputs:
@@ -30,7 +35,7 @@ export function Each(props) {
     return (
         <>
             <div className="card">
-                <img alt={currencyName} src={setImg(currencyName)}></img>
+                <img title={titleHover} alt={currencyName} src={setImg(currencyName)}></img>
                 <h3>{currencyConverted}</h3>
                 <h3>{currencyName}</h3>
             </div>

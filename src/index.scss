@@ -201,10 +201,14 @@ a {
   }
 
   .apps {
+    a {
+      display: inline-block;
+      margin: $main-padding;
+    }
+
     img {
       filter: grayscale(100%);
-      width: 40px;
-      margin: $main-padding;
+      width: 30px;
       transition: $main-transition;
       cursor: pointer;
       &:hover {

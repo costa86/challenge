@@ -47,6 +47,7 @@ export function App() {
 
     };
 
+    const loading = (<h1>Loading...</h1>);
 
     const results = items.map((each) => (
         <Each
@@ -158,7 +159,7 @@ export function App() {
             </div>
 
             <div className="results">
-                {results}
+                {items.length ? results : loading}
             </div>
 
             <TopBtn />
