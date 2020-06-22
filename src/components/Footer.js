@@ -8,7 +8,7 @@ export function Footer() {
         <>
             <div className="footer">
                 <div className="footer-logo" >
-                    <img alt="Upold logo" src={logo}></img>
+                    <img alt="Uphold logo" src={logo}></img>
                 </div>
 
                 <div className="products">

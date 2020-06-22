@@ -141,32 +141,27 @@ export function App() {
         setBtnSearchDisabled((res && +res > 0) ? false : true);
     }
 
-
-
-
     return (
         <>
             <Header />
             <div className="intro">
                 <h1>Currency Converter</h1>
+                
                 <h2>Receive competivite and transparent pricing with no hidden spreads. See how we compare</h2>
 
                 <input id="from" onChange={changeBtnSearch} type="number" min="1" defaultValue="1"></input>
                 <small>Enter an amount to check the rates</small>
+
                 <select name="" onChange={x => setCurrency(x.target.value)} id="currency">
                     <Currencies />
-
                 </select>
-                <button disabled={btnSearchDisabled} onClick={init}>Convert</button>
-                {/*       <p>{currency}</p>
-                <p>{amount}</p>
-                <p>Results: {items.length}</p> */}
-            </div>
 
+                <button disabled={btnSearchDisabled} onClick={init}>Convert</button>
+
+            </div>
 
             <div className="results">
                 {results}
-
             </div>
             <TopBtn />
             <Footer />

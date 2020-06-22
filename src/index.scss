@@ -139,13 +139,16 @@ a {
 
   p {
     color: $dark-gray;
+    margin-left: 2%;
   }
+
   a {
     display: block;
   }
 
   .footer-logo {
     text-align: center;
+    margin-top: 6%;
     img {
       width: 40%;
     }
@@ -171,9 +174,7 @@ a {
   }
   grid-area: intro;
 }
-button:disabled {
-  cursor: not-allowed;
-}
+
 button {
   cursor: pointer;
   padding: 15px 32px;
@@ -187,6 +188,7 @@ button {
   border: 2px solid $uphold-green;
   transition: $main-transition;
   &:disabled {
+    cursor: not-allowed;
     background-color: gainsboro;
     border: 2px solid gainsboro;
     &:hover {
@@ -200,10 +202,11 @@ button {
     color: $uphold-green;
   }
 }
+
 select {
   width: auto;
-  padding: 5px;
-  margin: 5px;
+  padding: $main-padding;
+  margin: $main-padding;
   padding: 15px 32px;
   font-size: 16px;
   border: 2px solid $uphold-green;
