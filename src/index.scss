@@ -99,6 +99,10 @@ small {
   justify-content: space-between;
   gap: $main-padding;
   grid-area: header;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: white;
 }
 
 // Responsive mode
@@ -118,6 +122,7 @@ small {
   }
 
   .header {
+    position: relative;
     grid-template-columns: 1fr;
     grid-template-areas:
       "logo"
