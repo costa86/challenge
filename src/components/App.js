@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SDK from '@uphold/uphold-sdk-javascript';
 import { Each } from "./Each";
 import { Footer } from "./Footer";
@@ -18,6 +18,8 @@ export function App() {
 
     const [amount, setAmount] = useState("1");
     const [cacheTimer, setCacheTimer] = useState(0);
+    //const [enableSearch, setEnableSearch] = useState(false);
+
 
     const [items, setItems] = useState([]);
     const [cache, setCache] = useState({});
@@ -39,7 +41,7 @@ export function App() {
     }
 
     // Sets focus on currency input field when page loads
-    window.onload = () => document.getElementById("from").focus();
+    //window.onload = () => document.getElementById("from").focus();
 
     /**
      * Returns fetched data for a currency. Format: Array
@@ -114,8 +116,8 @@ export function App() {
         const now = new Date().getTime();
 
         if (!cache[currency] || cache[currency].time < now) {
-            //cache[currency] = await getRates(currency);
-            cache[currency] = sample;
+            cache[currency] = await getRates(currency);
+            //cache[currency] = sample;
 
             cache[currency].time = getCacheTimer();
             setCache({ ...cache, [currency]: cache[currency] });
@@ -127,9 +129,32 @@ export function App() {
     /**
      * Starts all
      */
+    /*    function init() {
+           setCachedResult();
+       } */
+
     function init() {
+
+        let input = document.getElementById("input");
+
+        setBtnSearchDisabled((input && +input.value > 0) ? true : false);
+
+        setCurrency(document.getElementById("currency").value);
+
         setCachedResult();
     }
+
+    useEffect(() => {
+        document.getElementById("from").focus();
+
+        //setCurrency(document.getElementById("currency").value);
+
+        //console.log(currency);
+        setCachedResult();
+
+    }, [currency]);
+
+
 
     /**
      * Toggles enabled/disabled on "convert" button
@@ -146,17 +171,21 @@ export function App() {
             <Header />
             <div className="intro">
                 <h1>Currency Converter</h1>
-                
+
                 <h2>Receive competivite and transparent pricing with no hidden spreads. See how we compare</h2>
 
                 <input id="from" onChange={changeBtnSearch} type="number" min="1" defaultValue="1"></input>
                 <small>Enter an amount to check the rates</small>
 
-                <select name="" onChange={x => setCurrency(x.target.value)} id="currency">
+                {<select name="" disabled={btnSearchDisabled} onChange={init} id="currency">
                     <Currencies />
-                </select>
+                </select>}
 
-                <button disabled={btnSearchDisabled} onClick={init}>Convert</button>
+                {/*               {<select name="" onChange={x => setCurrency(x.target.value)} id="currency">
+                    <Currencies />
+                </select>} */}
+
+                {/* <button disabled={btnSearchDisabled} onClick={init}>Convert</button> */}
 
             </div>
 

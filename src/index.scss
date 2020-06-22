@@ -8,16 +8,36 @@ $dark-gray: rgb(70, 69, 69);
   color: grey;
 }
 
-input {
-  padding: 5px;
+input,
+select {
   font-size: larger;
   border: 3px solid gray;
   transition: $main-transition;
   border-radius: 5px;
-  width: 130px;
   &:hover,
   &:focus {
     border: 3px solid $uphold-green;
+  }
+}
+
+input {
+  width: 130px;
+  padding: 5px;
+}
+
+select {
+  width: auto;
+  padding: 10px 32px;
+  font-size: large;
+  background-color: white;
+  margin: $main-padding;
+  cursor: pointer;
+  &:disabled{
+    background-color: gainsboro;
+    color: black;
+    opacity: .5;
+    border: 3px solid gray;
+    cursor: not-allowed;
   }
 }
 
@@ -77,13 +97,29 @@ small {
   grid-area: header;
 }
 
+// Responsive mode
+
 @media screen and (max-width: 750px) {
+  .footer {
+    .footer-logo {
+      display: none;
+    }
+
+    justify-items: center;
+
+    a,
+    p {
+      text-align: center;
+    }
+  }
+
   .header {
     grid-template-columns: 1fr;
     grid-template-areas:
       "logo"
       "links"
       "login";
+
     .links {
       grid-area: links;
 
@@ -92,6 +128,7 @@ small {
         text-decoration: none;
       }
     }
+
     .logo {
       grid-area: logo;
       width: 40%;
@@ -108,6 +145,7 @@ small {
     }
   }
 }
+
 .logo {
   width: 100%;
   height: auto;
@@ -134,12 +172,12 @@ a {
   grid-area: footer;
   display: grid;
   gap: $main-padding;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   text-align: left;
 
   p {
     color: $dark-gray;
-    margin-left: 2%;
+    margin-left: 5px;
   }
 
   a {
@@ -203,18 +241,9 @@ button {
   }
 }
 
-select {
-  width: auto;
-  padding: $main-padding;
-  margin: $main-padding;
-  padding: 15px 32px;
-  font-size: 16px;
-  border: 2px solid $uphold-green;
-}
-
 .results {
   grid-area: results;
-  justify-items: left;
+  justify-items: center;
   display: grid;
   gap: $main-padding;
   margin: 20px;
