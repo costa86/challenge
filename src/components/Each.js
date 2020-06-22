@@ -2,31 +2,30 @@ import React from 'react'
 
 
 export function Each(props) {
-    
-    const noImg = require("./../assets/XPT.png");
 
-    const myRound = num => (+num).toFixed(2).toString();
+    const imageNotFound = require("./../assets/XPT.png");
 
-    let currencyConverted = myRound(props.amount / props.item.bid);
+    const roundedResult = num => (+num).toFixed(2).toString();
+
+    let currencyConverted = roundedResult(props.amount / props.item.bid);
 
     let currencyName = props.item.pair.slice(0, 3);
 
     /**
      * Returns image for currency. Possible outputs:
-     * 1. File with the parameter name + ".pgn"
+     * 1. File with the parameter ImageName + ".pgn"
      * 2. Default image, case #1 is not found
-     * @param {*} name 
+     * @param {*} imageName 
      */
-    function setImg(name) {
+    function setImg(imageName) {
         let res;
         try {
-            res = require(`./../assets/${name}.png`);
+            res = require(`./../assets/${imageName}.png`);
         } catch (error) {
-            res = noImg;
+            res = imageNotFound;
         }
         return res;
     }
-
 
     return (
         <>

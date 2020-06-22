@@ -1,5 +1,9 @@
 import React from 'react'
 
+/**
+ * "GO-TO-TOP" button. It is only visible when user scrolls down
+ * @param {*} props 
+ */
 export function TopBtn(props) {
 
     function scrollFun() {

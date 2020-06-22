@@ -102,10 +102,11 @@ export function App() {
 
     /**
      * Sets items to be rendered, based on values stored on cache.
-     * If the requested currency is not on the cache yet, it will be fetched beforehand.
+     * If the requested currency is not on the cache yet, or its cache time is
+     * expired (older than current time); it will be fetched beforehand and its cache time
+     * will be updated.
      */
     async function setCachedResult() {
-
         const now = new Date().getTime();
 
         if (!cache[currency] || cache[currency].time < now) {
@@ -120,7 +121,9 @@ export function App() {
     }
 
     useEffect(() => {
+        // Sets focus on amount input
         document.getElementById("from").focus();
+        // Renders results on page
         setCachedResult();
         //console.log(currency);
     }, [currency]);
@@ -139,6 +142,7 @@ export function App() {
     return (
         <>
             <Header />
+
             <div className="intro">
                 <h1>Currency Converter</h1>
 
@@ -156,7 +160,9 @@ export function App() {
             <div className="results">
                 {results}
             </div>
+
             <TopBtn />
+
             <Footer />
         </>
     );
