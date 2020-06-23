@@ -10,7 +10,7 @@ export function Each(props) {
     let bid = roundedResult(props.item.bid);
     let ask = roundedResult(props.item.ask);
 
-    let currencyConverted = roundedResult(props.amount / props.item.bid);
+    let currencyConverted = props.amount > 0 ? roundedResult(props.amount / props.item.bid) : 0;
 
     let currencyName = props.item.pair.slice(0, 3);
 
