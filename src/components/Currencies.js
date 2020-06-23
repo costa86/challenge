@@ -16,7 +16,7 @@ export function Currencies() {
         "HUF", "ILS", "INR","IOT","JPY","KES","LBA",
         "LIN","LTC","MXN","NAN","NEO","NOK","NZD","OMG",
         "PHP","PLN","RON","SEK","SGD","STO","TRX","TUS",
-        "UPB","UPE","UPT","UPU","USD","VOX","XAG","XAU",
+        "UPB","UPE","UPT","UPU","VOX","XAG","XAU",
         "XEM","XLM","XPD","XPT","XRP","ZIL","ZRX"
     ];
     const allCurrencies = choices.map((e) => (

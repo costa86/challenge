@@ -5,14 +5,14 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Currencies } from './Currencies';
 import { TopBtn } from "./TopBtn";
-
+import { CLIENT_ID, CLIENT_SECRET } from "./../constants";
 export function App() {
 
     const cacheLifeSpan = 600000 // 10 min = 600000 ms
 
     const sdk = new SDK({
-        clientId: 'c3435e98b454488c9aff9512939aad8f92ab0618',
-        clientSecret: '8fb151883de6bc31a28aa3cb0526fed78cccbf95',
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
         baseUrl: 'http://api-sandbox.uphold.com',
     });
 
