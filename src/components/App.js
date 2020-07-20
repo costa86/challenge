@@ -6,9 +6,10 @@ import { Header } from "./Header";
 import { Currencies } from './Currencies';
 import { TopBtn } from "./TopBtn";
 import { CLIENT_ID, CLIENT_SECRET } from "./../constants";
+
 export function App() {
 
-    const cacheLifeSpan = 600000 // 10 min = 600000 ms
+    const cacheLifeSpan = 600000; // 10 min = 600000 ms
 
     const sdk = new SDK({
         clientId: CLIENT_ID,
@@ -57,50 +58,6 @@ export function App() {
         />
     ));
 
-    let sample = [
-        {
-            "ask": "0.08069",
-            "bid": "0.07994",
-            "currency": "USD",
-            "pair": "ADAUSD"
-        },
-        {
-            "ask": "0.27226",
-            "bid": "0.27226",
-            "currency": "USD",
-            "pair": "AEDUSD"
-        },
-        {
-            "ask": "0.01435",
-            "bid": "0.01435",
-            "currency": "USD",
-            "pair": "ARSUSD"
-        },
-        {
-            "ask": "2.64074",
-            "bid": "2.62271",
-            "currency": "USD",
-            "pair": "ATOMUSD"
-        },
-        {
-            "ask": "0.68698",
-            "bid": "0.68698",
-            "currency": "USD",
-            "pair": "AUDUSD"
-        },
-        {
-            "ask": "0.21965",
-            "bid": "0.21786",
-            "currency": "USD",
-            "pair": "BATUSD"
-        },
-        {
-            "ask": "235.41613",
-            "bid": "234.71301",
-            "currency": "USD",
-            "pair": "BCHUSD"
-        }];
-
     /**
      * Sets items to be rendered, based on values stored on cache.
      * If the requested currency is not on the cache yet, or its cache time is
@@ -112,13 +69,11 @@ export function App() {
 
         if (!cache[currency] || cache[currency].time < now) {
             cache[currency] = await getRates(currency);
-            //cache[currency] = sample;
 
             cache[currency].time = getCacheTimer();
             setCache({ ...cache, [currency]: cache[currency] });
         }
         setItems(cache[currency]);
-        //console.log(cache[currency]);
     }
 
     useEffect(() => {

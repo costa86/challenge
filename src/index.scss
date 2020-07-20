@@ -13,7 +13,7 @@ select {
   font-size: larger;
   border: 3px solid gray;
   transition: $main-transition;
-  border-radius: 5px;
+  border-radius: $main-padding;
   &:hover,
   &:focus {
     border: 3px solid $uphold-green;
@@ -22,7 +22,7 @@ select {
 
 input {
   width: 130px;
-  padding: 5px;
+  padding: $main-padding;
 }
 
 select {
